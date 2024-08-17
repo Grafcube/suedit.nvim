@@ -19,7 +19,14 @@ function M.setup(opts)
 end
 
 local function can_write(file)
-	return vim.loop.fs_access(file, "W") or vim.loop.fs_stat(file) == nil
+	while file ~= "/" do
+		if vim.loop.fs_stat(file) ~= nil then
+			return vim.loop.fs_access(file, "W")
+		else
+			file = vim.fn.fnamemodify(file, ":p:h")
+		end
+	end
+	return false
 end
 
 function M.save_file()
