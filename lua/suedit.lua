@@ -31,7 +31,8 @@ end
 
 function M.save_file()
 	vim.notify(
-		"Your version of `suedit.nvim` will no longer receive updates. Please change your plugin config to use `<https://codeberg.org/grafcube/suedit.nvim>`"
+		"Your version of `suedit.nvim` will no longer receive updates. Please change your plugin config to use `<https://codeberg.org/grafcube/suedit.nvim>`",
+		vim.log.levels.ERROR
 	)
 
 	local bufnr = vim.api.nvim_get_current_buf()
