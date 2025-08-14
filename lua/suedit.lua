@@ -30,6 +30,10 @@ local function can_write(file)
 end
 
 function M.save_file()
+	vim.notify(
+		"Your version of `suedit.nvim` will no longer receive updates. Please change your plugin config to use `<https://codeberg.org/grafcube/suedit.nvim>`"
+	)
+
 	local bufnr = vim.api.nvim_get_current_buf()
 	local filepath = vim.api.nvim_buf_get_name(bufnr)
 
